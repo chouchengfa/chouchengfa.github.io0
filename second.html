@@ -29,19 +29,32 @@
             font-size: 23px;
             margin-left: 20px;
         }
+        .container {
+            display: flex;
+            align-items: center; /* 让图片和文本在同一行的中心对齐 */
+            justify-content: space-between; /* 在图片和文本之间添加间距 */
+        }
+        img {
+            max-width: 100%; /* 图片最大宽度为容器宽度 */
+            height: auto; /* 保持纵横比 */
+            margin-right: 10px; /* 图片与文本之间的间距 */
+        }
     </style>
 </head>
 <body>
     <div class="header">那英需要你</div>
-    <img src="naying.jpg" width="50%" height="50%">
-    <div class="content">
-        要求
+    <div class="container">
+        <img src="naying.jpg">
+        <div class="content">
+            要求
             <p>唱到两分半</p>
-
+        </div>
+        <div class="content2">
+            <p>由赵钰博提供,特此鸣谢</p>
+        </div>
     </div>
-    <div class="content2">
-        <p>由赵钰博提供,特此鸣谢</p>
-    </div>
+    <img src="naying.jpg" width="50%" height="50%">
+    <
     
     </div>
 </body>
