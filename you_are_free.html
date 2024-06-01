@@ -23,7 +23,8 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transform: scale(0.8) translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
         }
         .header {
             font-family: '华文琥珀', sans-serif;
@@ -56,12 +57,21 @@
             border-radius: 50%;
             width: 120px;
             height: 120px;
-            animation: spin 2s linear infinite;
-            position: absolute;
+            animation: spin 1s linear infinite;
+        }
+        .loader-text {
+            margin-top: 150px;
+            font-size: 20px;
+            color: #3498db;
+            animation: fadein 1.5s linear infinite;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        @keyframes fadein {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
         }
         .loader-container {
             display: flex;
@@ -74,12 +84,14 @@
             left: 0;
             background: rgba(255, 255, 255, 0.8);
             z-index: 10;
+            flex-direction: column;
         }
     </style>
 </head>
 <body>
     <div class="loader-container" id="loader-container">
         <div class="loader"></div>
+        <div class="loader-text">加载中，请稍候...</div>
     </div>
     <div class="container" id="content-container">
         <div class="header">恭喜找到彩蛋</div>
@@ -92,14 +104,17 @@
         <div class="content2">
             彩蛋精心制作,记住知足常乐
         </div>
-       
     </div>
     <script>
         window.addEventListener('load', function() {
             var loaderContainer = document.getElementById('loader-container');
             var contentContainer = document.getElementById('content-container');
-            loaderContainer.style.display = 'none';
-            contentContainer.style.opacity = 1;
+            loaderContainer.style.opacity = 0;
+            setTimeout(function() {
+                loaderContainer.style.display = 'none';
+                contentContainer.style.opacity = 1;
+                contentContainer.style.transform = 'scale(1) translateY(0)';
+            }, 100); // 延时 0.5 秒隐藏 loaderContainer
         });
     </script>
 </body>
